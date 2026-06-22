@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube 2.0 - Premium Edition</title>
+    <link rel="stylesheet" href="st.css">
+    <!-- Иконки Google Material Icons -->
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Шапка (Header) с эффектом стекла -->
+    <header class="header">
+        <div class="logo-section">
+            <i class="material-icons menu-icon" id="menuToggle">menu</i>
+            <div class="logo-wrapper" id="homeBtn">
+                <img src="https://wikimedia.org" alt="YouTube Logo" class="logo">
+                <span class="logo-badge">2.0</span>
+            </div>
+        </div>
+
+        <div class="search-section">
+            <form id="searchForm" class="search-form">
+                <input type="text" id="searchInput" placeholder="Искать на YouTube 2.0...">
+                <button type="submit" class="search-btn">
+                    <i class="material-icons">search</i>
+                </button>
+            </form>
+            <button class="mic-btn"><i class="material-icons">mic</i></button>
+        </div>
+
+        <div class="actions-section">
+            <i class="material-icons action-icon" title="Создать">video_call</i>
+            <i class="material-icons action-icon" title="Уведомления">notifications</i>
+            <div class="avatar" id="accountBtn" title="Аккаунт">
+                <img src="https://picsum.photos" alt="Avatar">
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Боковое меню (Sidebar) -->
+        <aside class="sidebar" id="sidebar">
+            <a href="#" class="nav-link active" data-filter="all"><i class="material-icons">home</i><span>Главная</span></a>
+            <a href="#" class="nav-link" data-filter="explore"><i class="material-icons">explore</i><span>Навигатор</span></a>
+            <a href="#" class="nav-link" data-filter="html"><i class="material-icons">code</i><span>HTML & CSS</span></a>
+            <a href="#" class="nav-link" data-filter="javascript"><i class="material-icons">javascript</i><span>JavaScript</span></a>
+            <hr>
+            <a href="#" class="nav-link" data-section="library"><i class="material-icons">Library</i><span>Библиотека</span></a>
+            <a href="#" class="nav-link" data-section="history"><i class="material-icons">History</i><span>История</span></a>
+            <a href="#" class="nav-link" data-section="liked"><i class="material-icons">Liked</i><span>Понравившиеся</span></a>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="content">
+            <h2 id="categoryTitle" class="section-title">Главная</h2>
+            <!-- Сетка жестко по 3 огромных видео в ряд -->
+            <div class="video-grid" id="videoGrid"></div>
+        </main>
+    </div>
+
+    <!-- Модальное окно аккаунта -->
+    <div class="modal-overlay" id="accountModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Аккаунт YouTube 2.0</h3>
+                <i class="material-icons close-btn" id="closeModal">close</i>
+            </div>
+            <div class="modal-body">
+                <div class="user-info">
+                    <img src="https://picsum.photos" alt="Avatar">
+                    <div>
+                        <h4>Иван Иванов</h4>
+                        <p class="user-tag">@ivan_developer</p>
+                    </div>
+                </div>
+                <hr>
+                
+                <!-- Переключатель темы -->
+                <div class="modal-item theme-switcher" id="themeToggleBtn">
+                    <div class="theme-left">
+                        <i class="material-icons" id="themeIcon">brightness_7</i>
+                        <span id="themeText">Светлая тема</span>
+                    </div>
+                    <div class="toggle-switch">
+                        <span class="switch-slider"></span>
+                    </div>
+                </div>
+
+                <hr>
+                <a href="#" class="modal-item" id="myChannelBtn"><i class="material-icons">account_box</i>Мой канал</a>
+                <a href="#" class="modal-item" id="settingsBtn"><i class="material-icons">settings</i>Настройки</a>
+                <a href="#" class="modal-item" id="logoutBtn"><i class="material-icons">logout</i>Выйти</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

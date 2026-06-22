@@ -1,0 +1,508 @@
+/* Мощные CSS переменные для YouTube 2.0 */
+[data-theme="light"] {
+    --bg-primary: #f4f5f7;
+    --bg-surface: rgba(255, 255, 255, 0.85);
+    --bg-card: #ffffff;
+    --bg-element: #eef0f3;
+    --bg-element-hover: #e2e6ea;
+    --text-main: #0f0f0f;
+    --text-muted: #5f6368;
+    --border-color: rgba(0, 0, 0, 0.06);
+    --logo-filter: none;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
+    --hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --blur-effect: blur(16px);
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0a0a0c;
+    --bg-surface: rgba(18, 18, 22, 0.85);
+    --bg-card: #141418;
+    --bg-element: #22222a;
+    --bg-element-hover: #2e2e38;
+    --text-main: #f5f6f8;
+    --text-muted: #9a9ea7;
+    --border-color: rgba(255, 255, 255, 0.05);
+    --logo-filter: invert(1) hue-rotate(180deg);
+    --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 1px 5px rgba(255, 255, 255, 0.01);
+    --hover-shadow: 0 25px 50px rgba(204, 0, 0, 0.15), 0 20px 40px rgba(0, 0, 0, 0.6);
+    --blur-effect: blur(16px);
+}
+
+/* Глобальные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    transition: background 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                color 0.3s ease, 
+                box-shadow 0.3s ease, 
+                transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* Премиальная стеклянная шапка */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    height: 64px;
+    background: var(--bg-surface);
+    backdrop-filter: var(--blur-effect);
+    -webkit-backdrop-filter: var(--blur-effect);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.logo-section, .actions-section {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.logo-badge {
+    background: #cc0000;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+}
+
+.menu-icon, .action-icon {
+    cursor: pointer;
+    color: var(--text-main);
+    padding: 10px;
+    border-radius: 14px;
+}
+
+.menu-icon:hover, .action-icon:hover {
+    background: var(--bg-element);
+}
+
+.logo {
+    height: 22px;
+    filter: var(--logo-filter);
+}
+
+/* Строгий футуристичный поиск */
+.search-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 0 1 640px;
+}
+
+.search-form {
+    display: flex;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-element);
+}
+
+.search-form input {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: transparent;
+    color: var(--text-main);
+}
+
+.search-btn {
+    background: var(--bg-element-hover);
+    border: none;
+    border-left: 1px solid var(--border-color);
+    padding: 0 24px;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+.mic-btn {
+    background: var(--bg-element);
+    border: none;
+    border-radius: 14px;
+    padding: 10px;
+    cursor: pointer;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+}
+
+.mic-btn:hover {
+    background: var(--bg-element-hover);
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Основной макет */
+.main-container {
+    display: flex;
+    margin-top: 64px;
+}
+
+/* Боковое меню */
+.sidebar {
+    width: 260px;
+    background: var(--bg-surface);
+    backdrop-filter: var(--blur-effect);
+    height: calc(100vh - 64px);
+    position: fixed;
+    padding: 16px 0;
+    overflow-y: auto;
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar.hide {
+    transform: translateX(-260px);
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 24px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 0 16px 16px 0;
+    margin-right: 16px;
+    margin-bottom: 4px;
+}
+
+.nav-link:hover, .nav-link.active {
+    background: var(--bg-element);
+    color: #cc0000;
+}
+
+.nav-link.active {
+    font-weight: 600;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 16px 0;
+}
+
+/* Контентная зона */
+.content {
+    margin-left: 260px;
+    padding: 32px;
+    width: 100%;
+}
+
+.content.full-width {
+    margin-left: 0;
+}
+
+.section-title {
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Мощный дисплей грид: ровно 3 огромных видео в ряд */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px; /* Увеличенные мощные отступы */
+}
+
+/* Чёткая премиум-карточка видео */
+.video-card {
+    background: var(--bg-card);
+    border-radius: 24px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Жесткий Hover эффект с глубокой тенью и масштабированием */
+.video-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--hover-shadow);
+}
+
+.thumbnail {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: var(--bg-element);
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.video-card:hover .thumbnail img {
+    transform: scale(1.05); /* Легкое увеличение превью при наведении */
+}
+
+.video-details {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.channel-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.channel-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-main);
+    line-height: 22px;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.channel-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+.video-stats {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* Переделанные медиа-кнопки */
+.media-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-color);
+}
+
+.media-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-element);
+    color: var(--text-main);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.media-btn:hover {
+    background: var(--bg-element-hover);
+}
+
+/* Эффект мощного неонового свечения при лайке */
+.media-btn.active {
+    background: #cc0000;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(204, 0, 0, 0.4);
+}
+
+/* Модальное окно аккаунта */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal {
+    background: var(--bg-card);
+    color: var(--text-main);
+    padding: 24px;
+    border-radius: 24px;
+    width: 340px;
+    box-shadow: var(--hover-shadow);
+    border: 1px solid var(--border-color);
+    transform: translateY(20px);
+}
+
+.modal-overlay.open .modal {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+}
+
+.close-btn:hover {
+    background: var(--bg-element);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-info img {
+    width: 54px;
+    height: 54px;
+    border-radius: 18px;
+}
+
+.user-tag {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.modal-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 14px;
+    cursor: pointer;
+}
+
+.modal-item:hover {
+    background: var(--bg-element);
+}
+
+/* Слайдер переключателя тем */
+.theme-switcher {
+    justify-content: space-between;
+}
+
+.theme-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background: #ccc;
+    border-radius: 24px;
+}
+
+.switch-slider {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: white;
+    top: 3px;
+    left: 3px;
+}
+
+[data-theme="dark"] .toggle-switch {
+    background: #cc0000;
+}
+
+[data-theme="dark"] .switch-slider {
+    transform: translateX(20px);
+}
+
+/* Медиа-запрос для сохранения читаемости на смартфонах */
+@media (max-width: 900px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        transform: translateX(-260px);
+    }
+    .content {
+        margin-left: 0;
+    }
+}
